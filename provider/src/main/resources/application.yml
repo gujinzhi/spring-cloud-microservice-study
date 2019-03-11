@@ -1,0 +1,44 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: microservice-provider-user    # 项目名称尽量用小写
+  jpa:
+      generate-ddl: false
+      show-sql: true
+      hibernate:
+        ddl-auto: none
+  datasource:                           # 指定数据源
+    name: DAQ
+#     url: jdbc:mysql://106.12.93.249:13306/app?useUnicode=true&characterEncoding=UTF8&autoReconnect=true
+    url: jdbc:mysql://127.0.0.1:3306/app?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    MapUnderscoreToCamelCase: true
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.itmuch.youran.persistence: ERROR
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.2.44:8761/eureka/,http://192.168.2.44:8762/eureka/    # 指定注册中心的地址
+  instance:
+    preferIpAddress: true

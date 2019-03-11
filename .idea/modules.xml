@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/microservice-consumer-movie-feign/microservice-consumer-movie-feign.iml" filepath="$PROJECT_DIR$/microservice-consumer-movie-feign/microservice-consumer-movie-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-consumer-movie-ribbon/microservice-consumer-movie-ribbon.iml" filepath="$PROJECT_DIR$/microservice-consumer-movie-ribbon/microservice-consumer-movie-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-consumer-movie-ribbon-with-hystrix/microservice-consumer-movie-ribbon-with-hystrix.iml" filepath="$PROJECT_DIR$/microservice-consumer-movie-ribbon-with-hystrix/microservice-consumer-movie-ribbon-with-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-discovery-eureka/microservice-discovery-eureka.iml" filepath="$PROJECT_DIR$/microservice-discovery-eureka/microservice-discovery-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pojo/pojo.iml" filepath="$PROJECT_DIR$/pojo/pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider/provider.iml" filepath="$PROJECT_DIR$/provider/provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-microservice-study.iml" filepath="$PROJECT_DIR$/spring-cloud-microservice-study.iml" />
+    </modules>
+  </component>
+</project>
