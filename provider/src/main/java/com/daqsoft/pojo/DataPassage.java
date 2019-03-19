@@ -1,4 +1,4 @@
-package provider.pojo;
+package com.daqsoft.pojo;
 
 import javax.persistence.*;
 
@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Entity
 @Table(name="data_passage")
 public class DataPassage {
+
+	public DataPassage() {
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -13,23 +17,36 @@ public class DataPassage {
 	private String type;
 	@Column
 	private String url;
+
 	@Column
-	private String username;
+	private Integer updateBoo;
+
 	@Column
 	private String name;
 	@Column
 	private String nameCode;
-	@Column
-	private String pwd;
+
 	@Column
 	private Integer tolerance;
-
+	@Column
+	private Integer project;
 
 	@Column
 	private Integer status;
+	@Column
+	private String param;
+	@Column
+	private String resolveReturnData;
+	@Column
+	private String dateType;
+
 
 	public DataPassage(String type, Integer status) {
 		this.type = type;
+		this.status = status;
+	}
+
+	public DataPassage(Integer status) {
 		this.status = status;
 	}
 
@@ -57,21 +74,6 @@ public class DataPassage {
 		this.url = url;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
 
 	public Integer getTolerance() {
 		return tolerance;
@@ -103,5 +105,45 @@ public class DataPassage {
 
 	public void setNameCode(String nameCode) {
 		this.nameCode = nameCode;
+	}
+
+	public Integer getProject() {
+		return project;
+	}
+
+	public void setProject(Integer project) {
+		this.project = project;
+	}
+
+	public String getParam() {
+		return param;
+	}
+
+	public void setParam(String param) {
+		this.param = param;
+	}
+
+	public String getResolveReturnData() {
+		return resolveReturnData;
+	}
+
+	public void setResolveReturnData(String resolveReturnData) {
+		this.resolveReturnData = resolveReturnData;
+	}
+
+	public Integer getUpdateBoo() {
+		return updateBoo;
+	}
+
+	public void setUpdateBoo(Integer updateBoo) {
+		this.updateBoo = updateBoo;
+	}
+
+	public String getDateType() {
+		return dateType;
+	}
+
+	public void setDateType(String dateType) {
+		this.dateType = dateType;
 	}
 }
