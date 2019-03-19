@@ -41,6 +41,7 @@ public class Register implements InitializingBean, ApplicationContextAware {
     }
 
     public GetData getStorageType(String name) {
+
         return serviceImpMap.get(name);
     }
 }

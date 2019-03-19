@@ -22,7 +22,7 @@ import java.util.Map;
 
 
 @Service("GetData_baisha")
-public class GetData_baisha implements GetData {
+public class GetData_baisha  {
     @Autowired
     private UrlSession urlSession;
     @Autowired
@@ -31,7 +31,6 @@ public class GetData_baisha implements GetData {
     @Autowired
     private DataPassageRepository   dataPassageRepository;
 
-    @Override
     public void getData(DataPassage dataPassage,String url) {
 
             Info info =  HttpUtil.captureHtmlSSLGet(url);
@@ -43,7 +42,7 @@ public class GetData_baisha implements GetData {
                 if(l !=0){
                     DataData data = null;
                     for(int i = 0;i<l;i++){
-                        data = new DataData(jsonArray.getJSONObject(i).toJSONString(),dataPassage.getId(),url);
+                        data = new DataData(jsonArray.getJSONObject(i).toJSONString(),dataPassage.getId(),url,dataPassage.getProject());
                         li.add(data);
                     }
                     //DateUtil.getNextm();
@@ -56,8 +55,6 @@ public class GetData_baisha implements GetData {
                 System.out.println(info.getError());
             }
         }
-
-
 
 
 

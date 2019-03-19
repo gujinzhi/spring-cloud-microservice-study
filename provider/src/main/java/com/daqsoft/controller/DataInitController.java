@@ -22,20 +22,16 @@ public class DataInitController {
 
     @GetMapping("/test")
     public Map getTask_h() {
-        Map map  = new HashMap();
-        map.put("s","200");
+        Map map = new HashMap();
+        map.put("s", "200");
         try {
-            for(;;){
-                dataImport.getData_h();
-            }
-
-
-        }catch (Exception e){
+            dataImport.getData_h();
+        } catch (Exception e) {
             e.printStackTrace();
-            map.put("s",e.getMessage());
+            map.put("s", e.getMessage());
             return map;
         }
-
+        return map;
     }
 
 

@@ -15,7 +15,8 @@ public class DataData {
 	private String data;
 	@Column
 	private Long dataPassageId;
-
+	@Column
+	private Integer project;
 	@Column
 	private String param;
 	@Column
@@ -23,7 +24,8 @@ public class DataData {
 	public DataData() {
 	}
 
-	public DataData(String data,Long id,String param) {
+	public DataData(String data,Long id,String param,Integer project) {
+		this.project = project;
 		this.param = param;
 		this.dataPassageId = id;
 		this.data = data;
@@ -68,5 +70,13 @@ public class DataData {
 
 	public void setSaveTime(Date saveTime) {
 		this.saveTime = saveTime;
+	}
+
+	public Integer getProject() {
+		return project;
+	}
+
+	public void setProject(Integer project) {
+		this.project = project;
 	}
 }
