@@ -53,7 +53,7 @@ public class GetData_baisha_thread  implements GetData {
                 dataPassageRepository.save(dataPassage);
 
                 Info info = HttpUtil.captureHtmlSSLGet(url);
-                dataLogRepositoryImpl.saveDataPassageLog(dataPassage,3);
+                dataLogRepositoryImpl.saveDataPassageLog(dataPassage,2);
                 if (info.getCode() == 0) {
                     JSONObject JSON = JSONObject.parseObject(info.getConnet());
                     JSONArray jsonArray = JSON.getJSONArray(dataPassage.getResolveReturnData());
@@ -70,7 +70,12 @@ public class GetData_baisha_thread  implements GetData {
                         //设置下一个查询时间 并保存。
                         dataPassage.setParam(DateUtil.getNextm(dataPassage.getParam(), 1, dataPassage.getType(), dataPassage.getDateType()));
                         dataPassageRepository.save(dataPassage);
-
+                    }else {
+                        //当前条件没有数据 查看设置跳过该条件
+                        if(dataPassage.getVerificationBoolean() == 1){
+                            dataPassage.setParam(DateUtil.getNextm(dataPassage.getParam(), 1, dataPassage.getType(), dataPassage.getDateType()));
+                            dataPassageRepository.save(dataPassage);
+                        }
                     }
                 } else {
                     System.out.println(info.getError());

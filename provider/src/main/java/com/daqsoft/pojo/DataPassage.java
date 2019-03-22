@@ -32,6 +32,9 @@ public class DataPassage {
 	private Integer project;
 
 	@Column
+	private Integer verificationBoolean;
+
+	@Column
 	private Integer status;
 	@Column
 	private String param;
@@ -39,6 +42,9 @@ public class DataPassage {
 	private String resolveReturnData;
 	@Column
 	private String dateType;
+	@Column
+	private String paramData;
+
 
 
 	public DataPassage(String type, Integer status) {
@@ -145,5 +151,21 @@ public class DataPassage {
 
 	public void setDateType(String dateType) {
 		this.dateType = dateType;
+	}
+
+	public Integer getVerificationBoolean() {
+		return verificationBoolean;
+	}
+
+	public void setVerificationBoolean(Integer verificationBoolean) {
+		this.verificationBoolean = verificationBoolean;
+	}
+
+	public String getParamData() {
+		return paramData;
+	}
+
+	public void setParamData(String paramData) {
+		this.paramData = paramData;
 	}
 }

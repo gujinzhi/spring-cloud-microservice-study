@@ -25,7 +25,7 @@ public class HttpUtil {
 	final static String METHOD_GET = "GET";
 	final static String METHOD_POST = "POST";
 	 static int TIMED = 60000;
-	private static Info captureHtml(String strURL , String method)  {
+	private static Info captureHtml(String strURL , String method,Map<String,Object> map)  {
 		Long i = System.currentTimeMillis();
 		System.out.print("开始："+ DateFormatUtils.format(new Date(), "HH:mm:ss"));
 		HttpURLConnection httpConn;
@@ -37,7 +37,26 @@ public class HttpUtil {
 
 			httpConn = (HttpURLConnection) url.openConnection();
 			httpConn.setReadTimeout(TIMED);
-			httpConn.setRequestMethod("GET");
+			httpConn.setRequestMethod(method);
+			if(map != null){
+				for (Map.Entry<String, Object> entry : map.entrySet()) {
+					if(!"body".equals(entry.getKey())){
+						httpConn.setRequestProperty(entry.getKey(),entry.getValue().toString());
+					}
+
+				}
+				if(map.get("body") != null){
+					httpConn.setDoOutput(true);
+					OutputStream os = httpConn.getOutputStream();
+						//将请求体写入到conn的输出流中
+					os.write(map.get("body").toString().getBytes());
+					//记得调用输出流的flush方法
+					os.flush();
+					//关闭输出流
+					os.close();
+				}
+			}
+
 
 			input = new InputStreamReader(httpConn.getInputStream(), "utf-8");
 			bufReader = new BufferedReader(input);
@@ -79,10 +98,13 @@ public class HttpUtil {
 		}
 	}
 	public static Info captureHtmlPost(String strURL)  {
-		return captureHtml(strURL,METHOD_POST);
+		return captureHtml(strURL,METHOD_POST,null);
+	}
+	public static Info captureHtmlPost(String strURL,Map map)  {
+		return captureHtml(strURL,METHOD_POST,map);
 	}
 	public static Info captureHtmlGet(String strURL)  {
-		return captureHtml(strURL,METHOD_GET);
+		return captureHtml(strURL,METHOD_GET,null);
 	}
 
 	public static Info captureHtmlSSLPost(String requestUrl) {
@@ -148,8 +170,11 @@ public class HttpUtil {
 	}
 	
 	public static void main(String[] args) {
+		Map<String,Object> ma = new HashMap<String,Object>();
 		try {
-		System.out.println(	HttpUtil.captureHtmlSSLPost("https://gg.m186.net/trip/api/external/v1/authorization?username=baisha01&password=c434c96f9c58752507de8729677f057be3e4f3414c321da389ea850b2fcca0788b1cf1d18ccf851d62ee9ef5c732b814e26e8e8bc573a69e190c263115f8a819"));
+			ma.put("Content-Type","application/json;charset=UTF-8");
+			ma.put("body","{\"inf\": 105,\"apikey\": \"cdzkdqTour109\",\"data\": \"5B0A34BDD6B0BB046CE5F2658CBA08F5EE516811CC2BAD3CF5FEFAE0E7BF62F6F640699056EA64BA7F1FC5FB47FFA9DCCD9231FB79C8FFA718E222A141F01CD2DB23BC91CC2DB3869D4B32841E45BECC\"}\n");
+		System.out.println(	HttpUtil.captureHtmlPost("http://110.249.146.212:8088/CSDfeeAnalyse/apiInf/select",ma));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
