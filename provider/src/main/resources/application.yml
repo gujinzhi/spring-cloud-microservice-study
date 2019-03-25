@@ -9,13 +9,13 @@ spring:
       hibernate:
         ddl-auto: none
   datasource:                           # 指定数据源
-    name: DAQ
-    url: jdbc:mysql://127.0.0.1:3306/app?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=true
-    username: root
-    password: 123456
-#    url: jdbc:mysql://192.168.0.93:13365/data_import?useUnicode=true&characterEncoding=UTF8&autoReconnect=true
-#    username: data_import
-#    password: itVfcUXGFNDNiSbRx(59@JsLZ
+#    name: DAQ
+#    url: jdbc:mysql://127.0.0.1:3306/app?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&useSSL=true
+#    username: root
+#    password: 123456
+    url: jdbc:mysql://192.168.0.93:13365/data_import?useUnicode=true&characterEncoding=UTF8&autoReconnect=true
+    username: data_import
+    password: itVfcUXGFNDNiSbRx(59@JsLZ
     driver-class-name: com.mysql.jdbc.Driver
     filters: stat
     maxActive: 20

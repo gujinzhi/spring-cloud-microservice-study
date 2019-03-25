@@ -53,7 +53,7 @@ public class GetData_baisha_thread  implements GetData {
                 dataPassageRepository.save(dataPassage);
 
                 Info info = HttpUtil.captureHtmlSSLGet(url);
-                dataLogRepositoryImpl.saveDataPassageLog(dataPassage,2);
+                 dataLogRepositoryImpl.saveDataPassageLog(dataPassage,2);
                 if (info.getCode() == 0) {
                     JSONObject JSON = JSONObject.parseObject(info.getConnet());
                     JSONArray jsonArray = JSON.getJSONArray(dataPassage.getResolveReturnData());
